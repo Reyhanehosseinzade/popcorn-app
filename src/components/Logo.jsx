@@ -1,9 +1,10 @@
+import popcorn from "../../public/popcorn.png";
 
 export const Logo = () => {
   return (
-    <div className="logo text-white text-xs sm:text-base font-bold col-span-3">
-      <span>🍿</span>
+    <div className="logo flex gap-1 items-center text-white font-bold col-span-6 md:col-span-3">
+      <img src={popcorn} alt="" className="h-10 object-cover" />
       usePopcorn
     </div>
   );
-}
+};

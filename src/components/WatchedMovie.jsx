@@ -1,19 +1,19 @@
 import { FaRegTimesCircle } from "react-icons/fa";
 
 export const WatchedMovie = ({
-  Title,
-  Poster,
-  Runtime,
+  title,
+  poster,
+  runtime,
   imdbRating,
-  userRate = 0,
+  userRate,
   imdbID,
   onDelete,
 }) => {
   return (
     <li className="flex gap-2 p-2 rounded-md bg-opacity-50 bg-slate-400 relative">
-      <img src={Poster} className="h-14 w-14 object-cover rounded-md" alt="" />
+      <img src={poster} className="h-14 w-14 object-cover rounded-md" alt={title} />
       <div className="grid">
-        <h3 className="title font-semibold">{Title}</h3>
+        <h3 className="title font-semibold">{title}</h3>
         <div className="flex justify-between gap-5 mt-2">
           <p className="text-sm sm:text-base">
             <span>⭐</span>
@@ -25,7 +25,7 @@ export const WatchedMovie = ({
           </p>
           <p className="text-sm sm:text-base">
             <span>⏳</span>
-            <span>{Runtime} min</span>
+            <span>{runtime} min</span>
           </p>
         </div>
       </div>

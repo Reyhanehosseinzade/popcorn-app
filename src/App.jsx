@@ -9,6 +9,8 @@ import { WatchedSummary } from "./components/WatchedSummary";
 import { WatchedMoviesList } from "./components/WatchedMoviesList";
 import { SelectedMovie } from "./components/SelectedMovie";
 const KEY = "41be285d";
+export const average = (arr) =>
+  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -17,6 +19,7 @@ function App() {
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
   const [watched, setWatched] = useState([]);
+  
 
   function handleSelectMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
@@ -73,7 +76,7 @@ function App() {
     });
   }
   return (
-    <main className="2xl:container mx-auto min-h-screen w-full pb-8 p-1 sm:p-5 bg-slate-800">
+    <main className="2xl:container mx-auto min-h-screen w-full pb-8 p-3 sm:p-5 bg-slate-800">
       <NavBar>
         <SearchBar movies={movies} query={query} setQuery={setQuery} />
         <NumResults movies={movies} />

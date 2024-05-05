@@ -18,6 +18,18 @@ export const SelectedMovie = ({
     (movie) => movie.imdbID === selectedId
   )?.userRate;
 
+    const {
+      Title: title,
+      Poster: poster,
+      Runtime: runtime,
+      imdbRating,
+      Plot: plot,
+      Released: released,
+      Actors: actors,
+      Director: director,
+      Genre: genre,
+    } = movie;
+
   useEffect(() => {
     const fetchSelected = async () => {
       try {
@@ -36,12 +48,12 @@ export const SelectedMovie = ({
     fetchSelected();
   }, [selectedId]);
   useEffect(() => {
-    if (!movie.Title) return;
-    document.title = `Movie | ${movie.Title}`;
+    if (!title) return;
+    document.title = `Movie | ${title}`;
     return () => {
       document.title = "usePopcorn";
     };
-  }, [movie.Title]);
+  }, [title]);
 
   useEffect(() => {
      function callback (e) {
@@ -56,13 +68,14 @@ export const SelectedMovie = ({
   }, [onClose]);
 
   function handleAdd() {
-    const newWatchedMovie = {
-      ...movie,
-      imdbID: selectedId,
-      userRate,
-      imdbRating: Number(movie.imdbRating),
-      Runtime: Number(movie.Runtime.split(" ").at(0)),
-    };
+   const newWatchedMovie = {
+     imdbID: selectedId,
+     title,
+     poster,
+     imdbRating: Number(imdbRating),
+     runtime: Number(runtime.split(" ").at(0)),
+     userRate,
+   };
     onAddWatched(newWatchedMovie);
     onClose();
   }
@@ -82,19 +95,19 @@ export const SelectedMovie = ({
             <div className="h-52">
               <img
                 className="object-contain h-full"
-                src={movie.Poster}
-                alt=""
+                src={poster}
+                alt={title}
               />
             </div>
             <div className="grid p-3">
-              <h2 className="text-xl font-bold capitalize">{movie.Title}</h2>
+              <h2 className="text-xl font-bold capitalize">{title}</h2>
               <span>
-                {movie.Released} &bull; {movie.Runtime}{" "}
+                {released} &bull; {runtime}{" "}
               </span>
-              <span>{movie.Genre}</span>
+              <span>{genre}</span>
               <span className="flex items-center gap-2">
                 <FaStar color="orange" />
-                <span>{movie.imdbRating}</span>
+                <span>{imdbRating}</span>
                 imdb rating
               </span>
             </div>
@@ -129,9 +142,9 @@ export const SelectedMovie = ({
           </div>
           <div>
             <p className="text-sm w-11/12 mx-auto grid gap-2">
-              <em>{movie.Plot}</em>
-              <span>{movie.Actors}</span>
-              <span>Directed By : {movie.Director}</span>
+              <em>{plot}</em>
+              <span>{actors}</span>
+              <span>Directed By : {director}</span>
             </p>
           </div>
         </>

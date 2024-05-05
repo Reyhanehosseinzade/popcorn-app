@@ -12,7 +12,7 @@ export const Box = ({children}) => {
       </div>
       <div
         className={`${
-          isOpen ? "h-[520px]" : "h-0"
+          isOpen ? "h-[540px]" : "h-0"
         } duration-500 ease-linear transition-[height] overflow-y-auto list`}
       >
         {children}
