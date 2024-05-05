@@ -43,7 +43,7 @@ function App() {
         setIsLoading(true);
         setError("");
         const res = await axios.get(
-          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+          `https://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
           { signal: signal }
         );
         if (res.data.Response === "False") {
