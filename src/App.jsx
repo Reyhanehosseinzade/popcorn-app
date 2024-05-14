@@ -18,8 +18,10 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
-  const [watched, setWatched] = useState([]);
-  
+  const [watched, setWatched] = useState(() => {
+    const storedValue = localStorage.getItem("watched")
+    return JSON.parse(storedValue)
+  });
 
   function handleSelectMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
@@ -75,6 +77,10 @@ function App() {
       return [...watched, movie];
     });
   }
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify(watched));
+  }, [watched]);
+
   return (
     <main className="2xl:container mx-auto min-h-screen w-full pb-8 p-3 sm:p-5 bg-slate-800">
       <NavBar>
