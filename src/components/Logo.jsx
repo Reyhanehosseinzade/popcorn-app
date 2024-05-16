@@ -1,4 +1,4 @@
-import popcorn from "../../public/popcorn.png";
+import popcorn from "/popcorn.png";
 
 export const Logo = () => {
   return (
